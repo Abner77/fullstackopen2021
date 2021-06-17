@@ -1,0 +1,16 @@
+title 0.4 
+note over browser:As the user hits submit, info about the new note is sent along with the request
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+server->browser: 302 redirect to new location /exampleapp/notes
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server->browser: html code returned
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server->browser: main.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server->browser: data.json
+note over browser:As data.json is ready, browser parsers the json file and renders the notes (li)
+browser->server: HTTP GET https://studies.cs.helsinki.fi/favicon.ico
+
