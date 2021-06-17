@@ -1,0 +1,6 @@
+title 0.6   
+
+note over browser: Gathers the info of the new note, adds the note to local data and send new note to server
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spaAuthentication Request
+
+
