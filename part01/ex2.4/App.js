@@ -15,11 +15,11 @@ const Course = ({id, name, parts}) => {
   let totalex = (parts.map (p => p.exercises)).reduce ((a, e) => a + e)    
 
   return(
-    <div>
+    <div key={id}>
       <h1>{name}</h1>
       <ul>
         {parts.map(part => 
-          <Part key={part.id} name={part.name} exercises={part.exercises} />          
+          <Part key={id + part.id.toString()} name={part.name} exercises={part.exercises} />          
         )}
       </ul>
       <h2>Total of exercises {totalex}</h2>
@@ -78,7 +78,7 @@ const App = () => {
   return (
     <>
       <h1>Web development curriculum</h1>      
-      {courses.map((course) => <Course id={course.id} name={course.name} parts={course.parts}/>)}      
+      {courses.map((course) => <Course id={course.id} name={course.name} parts={course.parts} key={course.id}/>)}
     </>
   )
 }
