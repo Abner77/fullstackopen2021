@@ -1,0 +1,29 @@
+import axios from 'axios'
+
+const baseUrl = 'http://localhost:3002/api/persons'
+
+const getAll = () => {
+  return axios.get(baseUrl)
+    // .then(response => response.data)
+    // .catch(console.log('error recuperando listaod'))
+}
+
+const create = newObject => {
+  return axios.post(baseUrl, newObject)    
+}
+
+const update = (id, newObject) => {
+  console.log ("llamando a puta", newObject)
+  return axios.put(`${baseUrl}/${id}`, newObject)    
+}
+
+const erase = (id) => {
+  return axios.delete(`${baseUrl}/${id}`)
+}
+
+export default { 
+  getAll: getAll, 
+  create: create, 
+  update: update, 
+  erase: erase
+}
