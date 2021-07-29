@@ -1,0 +1,2 @@
+DELETE http://localhost:3001/api/blogs/60e3fe7d01a66ceafee3ab5b HTTP/1.1
+
