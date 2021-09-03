@@ -1,0 +1,14 @@
+import React from "react";
+import { ICoursePart } from "./types";
+
+const Total = ( { courses } : {courses:  ICoursePart[]} ) => { 
+
+  return (
+    <p>
+        Number of exercises{" "}
+        {courses.reduce((carry, part) => carry + part.exerciseCount, 0)}
+    </p>
+  )
+}
+
+export default Total
