@@ -35,18 +35,21 @@ const PatientListDetails = () => {
   // HealthCheck
 
   const bufferEntries:JSX.Element[] = [];  
+  let contador = 0;
   patientDetails?.entries.map (e => {
-    bufferEntries.push (<p>{e.description}</p>);
+    bufferEntries.push (<p key={e.id}>{e.description}</p>);
     if (e.type == "Hospital") {
       const he:HospitalEntry = e as HospitalEntry;
-      bufferEntries.push (<ul>{he.diagnosisCodes.map (d => <li key={d}>{d}</li>)}</ul>);
+      bufferEntries.push (<ul key={e.id.concat((contador++).toString())}>{he.diagnosisCodes.map (d => <li key={d}>{d}</li>)}</ul>);
     }
     if (e.type == "OccupationalHealthcare") {
       const oe:OccupationalHealthcareEntry = e as OccupationalHealthcareEntry;
       if (oe.diagnosisCodes !== null)
-        bufferEntries.push (<ul>{oe.diagnosisCodes?.map (d => <li key={d}>{d}</li>)}</ul>);
+        bufferEntries.push (<ul key={e.id.concat((contador++).toString())}>{oe.diagnosisCodes?.map (d => <li key={d}>{d}</li>)}</ul>);
     }
   });
+
+  console.log('buffer', bufferEntries); 
       
   return (
     <div>
@@ -54,8 +57,7 @@ const PatientListDetails = () => {
       <p>ssn: {patientDetails?.ssn}</p>
       <p>occupation: {patientDetails?.occupation}</p>
       <h3>entries</h3>
-      {bufferEntries}
-      
+      {bufferEntries}      
     </div>
   );
   
